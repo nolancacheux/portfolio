@@ -93,7 +93,9 @@ export default function About() {
             flex={3}
             horizontal="center"
           >
-            <Avatar src={person.avatar} size="xl" />
+            <div className={styles.avatarWrapper}>
+              <Avatar src={person.avatar} size="xl" />
+            </div>
             <Row gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
               {person.location}
