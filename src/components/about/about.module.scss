@@ -13,7 +13,9 @@
     display: inline-block;
     max-width: 200px;
     overflow: hidden;
-    border-radius: var(--radius-m);
+    border-radius: 50%;
+    border: 3px solid var(--neutral-border-medium);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 
     &::after {
         content: '';
@@ -28,6 +30,7 @@
             var(--background-page) 100%
         );
         pointer-events: none;
+        border-radius: 0 0 50% 50%;
     }
 }
 

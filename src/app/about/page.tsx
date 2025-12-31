@@ -96,7 +96,7 @@ export default function About() {
               <Media
                 src={person.avatar}
                 alt={person.name}
-                radius="m"
+                radius="full"
                 aspectRatio="1/1"
                 sizes="200px"
               />
