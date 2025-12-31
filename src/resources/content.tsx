@@ -5,7 +5,7 @@ const person: Person = {
   firstName: "Nolan",
   lastName: "Cacheux",
   name: "Nolan Cacheux",
-  role: "Data Scientist & ML Engineer | High-Level Athlete",
+  role: "AI & ML Engineer | High-Level Athlete",
   avatar: "/images/profile-nolan.png",
   email: "cachnolan@gmail.com",
   location: "Europe/Paris",
@@ -43,8 +43,8 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name} | Data Scientist & ML Engineer`,
-  description: `Portfolio of ${person.name} - Data Scientist specializing in AI/ML, MLOps, and building production-ready machine learning solutions`,
+  title: `${person.name} | AI & ML Engineer`,
+  description: `Portfolio of ${person.name} - AI & ML Engineer specializing in MLOps and building production-ready machine learning solutions`,
   headline: <>Transforming Data into Intelligent Solutions</>,
   featured: {
     display: true,
@@ -61,7 +61,7 @@ const home: Home = {
   },
   subline: (
     <>
-      Data Scientist at <Text as="span" size="xl" weight="strong">Decathlon France</Text>, within the Effilab AI team. <br />
+      AI & ML Engineer at <Text as="span" size="xl" weight="strong">Decathlon France</Text>, within the Effilab AI team. <br />
       I transform complex business challenges into robust, industrialized AI solutions.
     </>
   ),
@@ -88,11 +88,11 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Data Scientist & ML Engineer at Decathlon France within the Effilab AI team, the company's center of excellence
+        AI & ML Engineer at Decathlon France within the Effilab AI team, the company's center of excellence
         dedicated to improving operational efficiency through Data Science and Innovation. Beyond tech, I'm also a
-        <strong> World Champion in Freestyle Football</strong> (Rookies category, Prague 2019), combining athletic excellence
-        with technical expertise. Currently pursuing my Master's degree (M2) in Data Science at JUNIA ISEN, I specialize
-        in developing end-to-end machine learning pipelines that drive business value.
+        <strong> Junior World Champion in Freestyle Football</strong> (Prague 2019) and <strong>2x Vice-Champion of France</strong> (2022, 2023),
+        combining athletic excellence with technical expertise. Currently pursuing my Master's degree (M2) in Data Science
+        at JUNIA ISEN, I specialize in developing end-to-end machine learning pipelines that drive business value.
       </>
     ),
   },
@@ -103,7 +103,7 @@ const about: About = {
       {
         company: "Decathlon France",
         timeframe: "Sept 2025 - Present",
-        role: "Data Scientist - AI/ML (Work-Study)",
+        role: "AI & ML Engineer (Work-Study)",
         achievements: [
           <>
             Integrated into Effilab AI, Decathlon's AI expertise hub, working on transforming complex operational

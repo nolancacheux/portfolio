@@ -27,7 +27,7 @@ export function Projects({ range, exclude }: ProjectsProps) {
     <Grid
       fillWidth
       columns="repeat(2, 1fr)"
-      mobileColumns="1col"
+      s={{ columns: "1col" }}
       gap="l"
       marginBottom="40"
       paddingX="l"

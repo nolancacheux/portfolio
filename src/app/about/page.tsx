@@ -97,7 +97,7 @@ export default function About() {
                 src={person.avatar}
                 alt={person.name}
                 radius="m"
-                aspectRatio="3/4"
+                aspectRatio="1/1"
                 sizes="200px"
               />
             </div>
