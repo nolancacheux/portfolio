@@ -238,3 +238,27 @@ export interface Gallery extends BasePageConfig {
     orientation: string;
   }>;
 }
+
+/**
+ * Sports page configuration.
+ * @description Configuration for the Sports/Athletic page.
+ */
+export interface Sports extends BasePageConfig {
+  /** Achievements */
+  achievements: Array<{
+    year: string;
+    competition: string;
+    result: string;
+  }>;
+  /** Trusted companies/organizations */
+  trustedBy: Array<{
+    name: string;
+    logo: string;
+    category: string;
+  }>;
+  /** Gallery images */
+  images: Array<{
+    src: string;
+    alt: string;
+  }>;
+}

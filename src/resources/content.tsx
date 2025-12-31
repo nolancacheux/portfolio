@@ -1,4 +1,4 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Blog, Gallery, Home, Newsletter, Person, Social, Sports, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -291,4 +291,42 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const sports: Sports = {
+  path: "/sports",
+  label: "Sports",
+  title: `Freestyle Football – ${person.name}`,
+  description: `Junior World Champion and 2x Vice-Champion of France in Freestyle Football`,
+  achievements: [
+    { year: "2019", competition: "World Championship (Prague)", result: "Junior World Champion" },
+    { year: "2022", competition: "Red Bull Street Style France", result: "Vice-Champion of France" },
+    { year: "2023", competition: "Red Bull Street Style France", result: "Vice-Champion of France" },
+    { year: "2023", competition: "Naostyle Cup", result: "Champion" },
+  ],
+  trustedBy: [
+    { name: "LOSC Lille", logo: "/images/freestyle/1200px-Logo_LOSC_Lille_2018.svg.png", category: "Sports Club" },
+    { name: "Valenciennes FC", logo: "/images/freestyle/1200px-Logo_Valenciennes_FC.svg.png", category: "Sports Club" },
+    { name: "France 3", logo: "/images/freestyle/1280px-France_3_-_logo_2018.svg.png", category: "Media" },
+    { name: "Ferrero", logo: "/images/freestyle/Ferrero_logo.svg.png", category: "Brand" },
+    { name: "ESBVA", logo: "/images/freestyle/ESBVA.png", category: "Sports Club" },
+    { name: "DASPM", logo: "/images/freestyle/daspm-logo-noir.png", category: "Agency" },
+  ],
+  images: [
+    { src: "/images/freestyle/image00001.jpeg", alt: "Freestyle Football Performance" },
+    { src: "/images/freestyle/image00002.jpeg", alt: "Freestyle Football Show" },
+    { src: "/images/freestyle/image00003.jpeg", alt: "Freestyle Football Event" },
+    { src: "/images/freestyle/image00004.jpeg", alt: "Freestyle Football Demo" },
+    { src: "/images/freestyle/image00008.jpeg", alt: "Freestyle Football Action" },
+    { src: "/images/freestyle/image00009.jpeg", alt: "Freestyle Football Performance" },
+    { src: "/images/freestyle/image00010.jpeg", alt: "Freestyle Football Show" },
+    { src: "/images/freestyle/image00011.jpeg", alt: "Freestyle Football Event" },
+    { src: "/images/freestyle/image00012.jpeg", alt: "Freestyle Football Demo" },
+    { src: "/images/freestyle/image00013.jpeg", alt: "Freestyle Football Action" },
+    { src: "/images/freestyle/image00016.jpeg", alt: "Freestyle Football Performance" },
+    { src: "/images/freestyle/image00017.jpeg", alt: "Freestyle Football Show" },
+    { src: "/images/freestyle/image00018.jpeg", alt: "Freestyle Football Event" },
+    { src: "/images/freestyle/image00019.jpeg", alt: "Freestyle Football Demo" },
+    { src: "/images/freestyle/image00020.jpeg", alt: "Freestyle Football Action" },
+  ],
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, sports };
