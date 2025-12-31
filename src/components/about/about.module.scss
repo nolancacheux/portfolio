@@ -8,9 +8,12 @@
     }
 }
 
-.avatarWrapper {
+.profileWrapper {
     position: relative;
     display: inline-block;
+    max-width: 200px;
+    overflow: hidden;
+    border-radius: var(--radius-m);
 
     &::after {
         content: '';
@@ -25,7 +28,6 @@
             var(--background-page) 100%
         );
         pointer-events: none;
-        border-radius: inherit;
     }
 }
 

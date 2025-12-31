@@ -5,9 +5,9 @@ const person: Person = {
   firstName: "Nolan",
   lastName: "Cacheux",
   name: "Nolan Cacheux",
-  role: "Data Scientist & ML Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "nolan.cacheux@gmail.com",
+  role: "Data Scientist & ML Engineer | High-Level Athlete",
+  avatar: "/images/profile-nolan.png",
+  email: "cachnolan@gmail.com",
   location: "Europe/Paris",
   languages: ["French", "English"],
 };
@@ -89,9 +89,10 @@ const about: About = {
     description: (
       <>
         Data Scientist & ML Engineer at Decathlon France within the Effilab AI team, the company's center of excellence
-        dedicated to improving operational efficiency through Data Science and Innovation. My mission is to transform
-        complex business challenges into robust, industrialized AI solutions. Currently pursuing my Master's degree (M2)
-        in Data Science at JUNIA ISEN, I specialize in developing end-to-end machine learning pipelines that drive business value.
+        dedicated to improving operational efficiency through Data Science and Innovation. Beyond tech, I'm also a
+        <strong> World Champion in Freestyle Football</strong> (Rookies category, Prague 2019), combining athletic excellence
+        with technical expertise. Currently pursuing my Master's degree (M2) in Data Science at JUNIA ISEN, I specialize
+        in developing end-to-end machine learning pipelines that drive business value.
       </>
     ),
   },

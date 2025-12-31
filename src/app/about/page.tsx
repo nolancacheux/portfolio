@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Button,
   Column,
   Heading,
@@ -93,8 +92,14 @@ export default function About() {
             flex={3}
             horizontal="center"
           >
-            <div className={styles.avatarWrapper}>
-              <Avatar src={person.avatar} size="xl" />
+            <div className={styles.profileWrapper}>
+              <Media
+                src={person.avatar}
+                alt={person.name}
+                radius="m"
+                aspectRatio="3/4"
+                sizes="200px"
+              />
             </div>
             <Row gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />

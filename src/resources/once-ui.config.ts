@@ -187,7 +187,7 @@ const schema: SchemaConfig = {
   type: "Person",
   name: "Nolan Cacheux",
   description: home.description,
-  email: "nolan.cacheux@gmail.com",
+  email: "cachnolan@gmail.com",
 };
 
 // social links
