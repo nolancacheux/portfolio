@@ -26,8 +26,8 @@ export function Projects({ range, exclude }: ProjectsProps) {
   return (
     <Grid
       fillWidth
-      columns="repeat(2, 1fr)"
-      s={{ columns: "1col" }}
+      columns={2}
+      s={{ columns: 1 }}
       gap="l"
       marginBottom="40"
       paddingX="l"

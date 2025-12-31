@@ -53,7 +53,7 @@ export default function Sports() {
       {/* Achievements */}
       <Column gap="l">
         <Heading as="h2" variant="display-strong-m">Achievements</Heading>
-        <Grid columns="repeat(2, 1fr)" s={{ columns: "1col" }} gap="m">
+        <Grid columns={2} s={{ columns: 1 }} gap="m">
           {sports.achievements.map((achievement, index) => (
             <Row
               key={index}
@@ -108,7 +108,7 @@ export default function Sports() {
       {/* Services */}
       <Column gap="l">
         <Heading as="h2" variant="display-strong-m">Services</Heading>
-        <Grid columns="repeat(3, 1fr)" s={{ columns: "1col" }} gap="m">
+        <Grid columns={3} s={{ columns: 1 }} gap="m">
           <Column padding="l" background="surface" radius="l" gap="s">
             <Heading as="h3" variant="heading-strong-l">Shows</Heading>
             <Text variant="body-default-m" onBackground="neutral-weak">
@@ -134,7 +134,7 @@ export default function Sports() {
       {/* Gallery */}
       <Column gap="l">
         <Heading as="h2" variant="display-strong-m">Gallery</Heading>
-        <Grid columns="repeat(3, 1fr)" s={{ columns: "repeat(2, 1fr)" }} gap="m">
+        <Grid columns={3} s={{ columns: 2 }} gap="m">
           {sports.images.map((image, index) => (
             <Media
               key={index}
