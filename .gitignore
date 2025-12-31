@@ -38,3 +38,7 @@ next-env.d.ts
 # Claude
 claude.md
 CLAUDE.md
+
+# Local content
+projects/
+
