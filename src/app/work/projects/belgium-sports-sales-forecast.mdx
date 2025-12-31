@@ -1,0 +1,84 @@
+---
+title: "Belgium Sports Sales Forecast"
+publishedAt: "2025-08-01"
+summary: "End-to-end ML pipeline for predicting sales KPIs across 64 sports categories at Decathlon Belgium using Prophet, Apache Spark, and Databricks."
+images:
+  - "/images/projects/belgium-forecast/pipeline.svg"
+team:
+  - name: "Nolan Cacheux"
+    role: "Data Scientist - MLOps"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/nolancacheux/"
+links:
+  - name: "GitHub"
+    url: "https://github.com/nolancacheux"
+    icon: "github"
+---
+
+## Overview
+
+A comprehensive sales forecasting solution developed during my internship at Decathlon Belgium. This project industrializes the prediction of 8 key sales KPIs (revenue, items sold) segmented by channel (InStore/OutStore, 1P/3P) for all 64 sports departments.
+
+## The Challenge
+
+Decathlon Belgium needed accurate demand predictions to optimize inventory management, staffing, and marketing campaigns across their sports categories. The solution had to:
+
+- Process historical sales data enriched with weather, holidays, and temporal features
+- Train specialized models for each sport category
+- Scale efficiently from development to production
+- Integrate with existing Databricks and AWS infrastructure
+
+## Solution Architecture
+
+The pipeline consists of three main stages executed in order:
+
+### 1. Feature Engineering
+
+An orchestrator that runs three sub-jobs in parallel:
+- **SalesFeaturesJob**: Generates temporal attributes, lag features, and rolling window statistics
+- **WeatherJob**: Integrates historical and forecast weather data
+- **HolidaysJob**: Creates features for Belgian holidays and school vacations
+
+### 2. Model Training
+
+- Trains a **multi-output Prophet model** per sport for forecasting all target variables simultaneously
+- Registers models in **MLflow Model Registry** with versioning
+- Logs parameters and metrics for reproducibility
+
+### 3. Prediction & Export
+
+- Retrieves latest models from registry for inference
+- Generates forecasts with year-over-year progression analysis
+- Exports results to Google Sheets for business stakeholders
+
+## Technologies Used
+
+- **Python** with Prophet for time-series forecasting
+- **Apache Spark** for distributed data processing
+- **Databricks** for orchestration and compute
+- **MLflow** for experiment tracking and model registry
+- **AWS S3** for data storage
+- **joblib** for parallel processing
+- **Google Sheets API** for business reporting
+
+## Key Features
+
+- **Parallel Processing**: Uses threading backend to process multiple sports concurrently
+- **Resilient Execution**: Errors in one sport don't halt the entire pipeline
+- **Automated Deployment**: CI/CD with GitHub Actions for preprod and prod environments
+- **Comprehensive Documentation**: Sphinx-generated docs hosted on GitHub Pages
+
+## Results
+
+The pipeline successfully:
+- Predicts sales for **64 sports categories**
+- Processes data from **multiple sources** (sales, weather, holidays)
+- Achieves **accurate demand forecasts** validated against historical data
+- Runs on scheduled jobs in production with **automated model retraining**
+
+## Code Quality
+
+- Static type checking with **mypy**
+- Linting with **ruff**
+- Security analysis with **bandit**
+- Code coverage tracked on **SonarCloud**

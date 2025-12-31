@@ -1,0 +1,117 @@
+---
+title: "DAISI - AI Assistant for Supplier Processes"
+publishedAt: "2025-12-01"
+summary: "Chat-based AI assistant for Decathlon collaborators to ask questions about supplier processes, powered by LangChain and RAG architecture."
+images:
+  - "/images/projects/daisi/cover.jpg"
+team:
+  - name: "Nolan Cacheux"
+    role: "Data Scientist - AI/ML"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/nolancacheux/"
+links:
+  - name: "GitHub"
+    url: "https://github.com/nolancacheux"
+    icon: "github"
+---
+
+## Overview
+
+DAISI (Decathlon AI Supplier Intelligence) is a sophisticated chat-based AI assistant designed to help Decathlon collaborators navigate supplier processes. The system provides direct answers based on ingested operational and accounting practical guides, with intelligent features like contextual disambiguation and multi-language support.
+
+## Core Features
+
+### Intelligent Question Answering
+
+The AI provides direct answers based on its learning from "fiches pratiques" related to Gex and other internal tools. Users can ask open-ended questions and receive accurate, contextual responses.
+
+### Smart Redirection
+
+Based on user queries, the assistant can:
+- Redirect users to create support tickets in SMAX
+- Link to relevant governmental websites
+- Suggest contacting designated accountants
+
+### Contextual Disambiguation
+
+The AI asks follow-up questions to clarify ambiguous requests. For example, if a user asks "How do I create an order?", the AI responds: "There are several tools. Which tool are you talking about?"
+
+### Conversational Memory
+
+The solution includes short-term memory to:
+- Build context around a user (email, cost center, job)
+- Use this context to better inform future responses
+- Maintain conversation continuity
+
+### Multi-Language Support
+
+- Automatic language detection
+- Responds in the same language as the question
+- Translation option available
+
+## System Integrations
+
+### IAM Integration
+Retrieves user's Cost Center, job title, and department from IAM based on their @decathlon.com email address.
+
+### ORGA DAF Integration
+Identifies the user's designated accountant by looking up their CC in the ORGA DAF sheet.
+
+### Eone Integration
+Enables users to ask for the status of a specific invoice.
+
+### Nomenclature Integration
+Retrieves information about correct tools and buyers related to indirect purchasing.
+
+## Technical Architecture
+
+- **LLM Backend**: Advanced language model for natural language understanding
+- **RAG Architecture**: Retrieval-Augmented Generation for accurate, grounded responses
+- **LangChain**: Orchestration framework for LLM applications
+- **Google Chat**: Deployment platform for internal users
+- **MLflow**: Experiment tracking and model evaluation
+
+## Safety Features
+
+### Prohibited Topics
+A predefined list of sensitive keywords detects and blocks questions on:
+- Salary information
+- Personal HR issues
+- Other sensitive topics
+
+### Access Control
+- Restricted to @decathlon.com email addresses
+- Partner and PRGX users explicitly excluded
+- Authentication via Google Workspace
+
+### Interaction Logging
+All questions and answers are archived for:
+- Continuous AI improvement
+- Adjustment of practical guides
+- Quality monitoring
+
+## Technologies Used
+
+- **Python 3.11** as the core language
+- **LangChain** for LLM orchestration
+- **Vector Databases** for document retrieval
+- **Google Chat API** for deployment
+- **Docker** for containerization
+- **GitHub Actions** for CI/CD
+- **SonarCloud** for code quality
+
+## Development Practices
+
+- Semantic versioning with **semantic-release**
+- Pre-commit hooks for code quality
+- Conventional commits with **commitlint**
+- Comprehensive test coverage
+- Automated CI/CD pipeline
+
+## Impact
+
+DAISI transforms how Decathlon collaborators access information about supplier processes:
+- **Reduced response time** for common questions
+- **24/7 availability** through Google Chat
+- **Consistent answers** based on official documentation
+- **Continuous improvement** through usage analytics
