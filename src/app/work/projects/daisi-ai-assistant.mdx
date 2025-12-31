@@ -1,9 +1,11 @@
 ---
 title: "DAISI - AI Assistant for Supplier Processes"
 publishedAt: "2025-12-01"
-summary: "Chat-based AI assistant for Decathlon collaborators to ask questions about supplier processes, powered by LangChain and RAG architecture."
+summary: "Enterprise GenAI chatbot for Decathlon Finance, built with LangGraph, Google Gemini, and RAG architecture on GCP infrastructure."
 images:
-  - "/images/projects/daisi/cover.jpg"
+  - "/images/projects/daisi/daisi-image-1.png"
+  - "/images/projects/daisi/daisi-image-2.png"
+  - "/images/projects/daisi/daisi-image-3.png"
 team:
   - name: "Nolan Cacheux"
     role: "Data Scientist - AI/ML"
@@ -17,101 +19,103 @@ links:
 
 ## Overview
 
-DAISI (Decathlon AI Supplier Intelligence) is a sophisticated chat-based AI assistant designed to help Decathlon collaborators navigate supplier processes. The system provides direct answers based on ingested operational and accounting practical guides, with intelligent features like contextual disambiguation and multi-language support.
+DAISI (Decathlon AI Supplier Intelligence) is an enterprise-grade GenAI chatbot deployed on Google Chat, enabling Decathlon Finance collaborators to ask questions about supplier processes. Built with a modern LangGraph agent architecture, the system leverages RAG (Retrieval-Augmented Generation) with Vertex AI Vector Search for accurate, grounded responses.
+
+## Technical Architecture
+
+### AI/ML Stack
+
+- **LangGraph** - Agent orchestration framework with stateful conversation flows
+- **LangChain** - LLM application framework for chains and prompts
+- **Google Gemini** via Vertex AI - Foundation model for text generation
+- **Vertex AI Vector Search** - High-performance semantic search for RAG
+- **FAISS** - Local vector similarity search
+- **Model Armor** - GCP security templates for anti-prompt injection and content filtering
+
+### Backend Infrastructure
+
+- **FastAPI** - High-performance async API framework
+- **Cloud Run** - Serverless container deployment with autoscaling
+- **Cloud SQL PostgreSQL** - Managed database for conversation persistence
+- **Google Cloud Storage** - Object storage for knowledge base and configurations
+- **Uvicorn** - ASGI server for FastAPI
+
+### Observability & MLOps
+
+- **MLflow 3.7+** - Experiment tracking with LangGraph autologging
+- **LiteLLM** - Unified LLM API gateway
+- **OpenTelemetry** - Distributed tracing with OTLP/gRPC export
+- **Cloud Logging** - Centralized log aggregation
+
+### Scheduled Jobs (Cloud Run Jobs)
+
+The application includes automated maintenance jobs orchestrated by Cloud Scheduler:
+
+| Job | Schedule | Purpose |
+|-----|----------|---------|
+| **TTL Cleanup** | Daily 03:00 | GDPR compliance - deletes checkpoints and MLflow traces older than 12 months |
+| **Trace Evaluation** | Daily 04:00 | LLM-as-Judge quality scoring with custom scorers (relevance, language consistency, conciseness) |
+| **Data Sync** | On config update | Syncs knowledge base from Google Sheets to GCS via Eventarc triggers |
+
+### Infrastructure as Code
+
+- **Terraform** - Complete GCP infrastructure management with modular design:
+  - `cloud-run` - Main service deployment
+  - `cloud-run-job` - Batch job definitions
+  - `cloud-scheduler` - Scheduled triggers
+  - `iam` - Service accounts and role bindings
+  - `model-armor` - Security template configuration
+  - `vertex-ai-vector-search` - Vector index management
+  - `storage` - GCS bucket configuration
+  - `eventarc` - Event-driven triggers
+
+### DevOps & CI/CD
+
+- **Docker** - Containerized deployments
+- **GitHub Actions** - Automated CI/CD pipelines
+- **SonarCloud** - Code quality and security analysis
+- **Pre-commit hooks** - Automated code checks
+- **Ruff** - Python linting and formatting
+- **Mypy** - Static type checking
+- **Pytest** - Async test framework with coverage
+
+### Project Management
+
+- **Jira** - Sprint planning and issue tracking
+- **Confluence** - Technical documentation with auto-sync from /docs
 
 ## Core Features
 
 ### Intelligent Question Answering
-
-The AI provides direct answers based on its learning from "fiches pratiques" related to Gex and other internal tools. Users can ask open-ended questions and receive accurate, contextual responses.
-
-### Smart Redirection
-
-Based on user queries, the assistant can:
-- Redirect users to create support tickets in SMAX
-- Link to relevant governmental websites
-- Suggest contacting designated accountants
+RAG-powered responses grounded in operational and accounting practical guides ("fiches pratiques").
 
 ### Contextual Disambiguation
+Multi-turn conversations with follow-up questions to clarify ambiguous requests.
 
-The AI asks follow-up questions to clarify ambiguous requests. For example, if a user asks "How do I create an order?", the AI responds: "There are several tools. Which tool are you talking about?"
+### Conversation Memory
+PostgreSQL-backed checkpointer for persistent conversation state with IAM authentication.
 
-### Conversational Memory
+### System Integrations
+- **IAM** - User context (Cost Center, job title, department)
+- **ORGA DAF** - Accountant assignment lookup
+- **Eone** - Invoice status queries
+- **Nomenclature** - Indirect purchasing information
 
-The solution includes short-term memory to:
-- Build context around a user (email, cost center, job)
-- Use this context to better inform future responses
-- Maintain conversation continuity
+### Security & Compliance
+- Model Armor templates for prompt injection protection
+- Prohibited topics detection (salary, HR issues)
+- GDPR-compliant data retention with automated TTL cleanup
+- Access restricted to @decathlon.com domain
 
-### Multi-Language Support
+## Technologies Summary
 
-- Automatic language detection
-- Responds in the same language as the question
-- Translation option available
-
-## System Integrations
-
-### IAM Integration
-Retrieves user's Cost Center, job title, and department from IAM based on their @decathlon.com email address.
-
-### ORGA DAF Integration
-Identifies the user's designated accountant by looking up their CC in the ORGA DAF sheet.
-
-### Eone Integration
-Enables users to ask for the status of a specific invoice.
-
-### Nomenclature Integration
-Retrieves information about correct tools and buyers related to indirect purchasing.
-
-## Technical Architecture
-
-- **LLM Backend**: Advanced language model for natural language understanding
-- **RAG Architecture**: Retrieval-Augmented Generation for accurate, grounded responses
-- **LangChain**: Orchestration framework for LLM applications
-- **Google Chat**: Deployment platform for internal users
-- **MLflow**: Experiment tracking and model evaluation
-
-## Safety Features
-
-### Prohibited Topics
-A predefined list of sensitive keywords detects and blocks questions on:
-- Salary information
-- Personal HR issues
-- Other sensitive topics
-
-### Access Control
-- Restricted to @decathlon.com email addresses
-- Partner and PRGX users explicitly excluded
-- Authentication via Google Workspace
-
-### Interaction Logging
-All questions and answers are archived for:
-- Continuous AI improvement
-- Adjustment of practical guides
-- Quality monitoring
-
-## Technologies Used
-
-- **Python 3.11** as the core language
-- **LangChain** for LLM orchestration
-- **Vector Databases** for document retrieval
-- **Google Chat API** for deployment
-- **Docker** for containerization
-- **GitHub Actions** for CI/CD
-- **SonarCloud** for code quality
-
-## Development Practices
-
-- Semantic versioning with **semantic-release**
-- Pre-commit hooks for code quality
-- Conventional commits with **commitlint**
-- Comprehensive test coverage
-- Automated CI/CD pipeline
-
-## Impact
-
-DAISI transforms how Decathlon collaborators access information about supplier processes:
-- **Reduced response time** for common questions
-- **24/7 availability** through Google Chat
-- **Consistent answers** based on official documentation
-- **Continuous improvement** through usage analytics
+| Category | Technologies |
+|----------|-------------|
+| **AI/ML** | LangGraph, LangChain, Google Gemini, Vertex AI Vector Search, FAISS, Model Armor |
+| **Backend** | Python 3.11, FastAPI, Uvicorn, Pydantic |
+| **Database** | Cloud SQL PostgreSQL, langgraph-checkpoint-postgres, psycopg3 |
+| **Cloud** | GCP, Cloud Run, Cloud Run Jobs, Cloud Scheduler, Eventarc, GCS |
+| **Observability** | MLflow, LiteLLM, OpenTelemetry |
+| **Infrastructure** | Terraform, Docker |
+| **CI/CD** | GitHub Actions, SonarCloud, Pre-commit |
+| **Quality** | Ruff, Mypy, Pytest, pytest-asyncio |

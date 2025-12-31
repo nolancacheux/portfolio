@@ -1,7 +1,7 @@
 ---
 title: "Belgium Sports Sales Forecast"
 publishedAt: "2025-08-01"
-summary: "End-to-end ML pipeline for predicting sales KPIs across 64 sports categories at Decathlon Belgium using Prophet, Apache Spark, and Databricks."
+summary: "Production ML pipeline for predicting 8 sales KPIs across 64 sports categories using Prophet, PySpark, and Databricks with MLflow model registry."
 images:
   - "/images/projects/belgium-forecast/pipeline.svg"
 team:
@@ -17,68 +17,127 @@ links:
 
 ## Overview
 
-A comprehensive sales forecasting solution developed during my internship at Decathlon Belgium. This project industrializes the prediction of 8 key sales KPIs (revenue, items sold) segmented by channel (InStore/OutStore, 1P/3P) for all 64 sports departments.
+A comprehensive, production-grade sales forecasting solution developed during my internship at Decathlon Belgium. This project industrializes the prediction of 8 key sales KPIs (GMV, items sold) segmented by channel (InStore/OutStore, 1P/3P) for all 64 sports departments.
 
-## The Challenge
+## Technical Architecture
 
-Decathlon Belgium needed accurate demand predictions to optimize inventory management, staffing, and marketing campaigns across their sports categories. The solution had to:
+### ML & Data Processing
 
-- Process historical sales data enriched with weather, holidays, and temporal features
-- Train specialized models for each sport category
-- Scale efficiently from development to production
-- Integrate with existing Databricks and AWS infrastructure
+- **Prophet** - Facebook's time-series forecasting library for multi-output predictions
+- **Apache Spark / PySpark** - Distributed data processing at scale
+- **Delta Lake** - ACID transactions and versioned data storage
+- **Pandas / NumPy** - Data manipulation and numerical computing
+- **scikit-learn** - Feature engineering and preprocessing
+- **joblib** - Parallel processing with threading backend for concurrent model training
 
-## Solution Architecture
+### MLOps Platform
 
-The pipeline consists of three main stages executed in order:
+- **Databricks** - Unified analytics platform for notebooks, compute, and orchestration
+- **MLflow** - Complete ML lifecycle management:
+  - Experiment tracking with metrics and parameters
+  - Model Registry with versioning (`prophet-sport-<sport_code>`)
+  - Model serving and deployment
+- **Databricks Bundles** - Infrastructure-as-code for Databricks deployments
 
-### 1. Feature Engineering
+### Cloud Infrastructure
 
-An orchestrator that runs three sub-jobs in parallel:
-- **SalesFeaturesJob**: Generates temporal attributes, lag features, and rolling window statistics
-- **WeatherJob**: Integrates historical and forecast weather data
-- **HolidaysJob**: Creates features for Belgian holidays and school vacations
+- **AWS S3** - Data lake storage for inputs, intermediate outputs, and final predictions
+- **AWS CodeArtifact** - Python package repository (wheel files)
+- **AWS ECR** - Docker container registry
+- **AWS SSO** - Identity and access management
+
+### Data Pipeline
+
+| Stage | Description |
+|-------|-------------|
+| **Feature Engineering** | Parallel sub-jobs: SalesFeaturesJob (lag features, rolling averages), WeatherJob (temperature, precipitation), HolidaysJob (Belgian holidays, school vacations) |
+| **Model Training** | One Prophet model per sport with multi-output forecasting, MLflow registration |
+| **Prediction** | Latest model retrieval, forecast generation, YoY progression analysis |
+| **Export** | Google Sheets integration with department-specific tabs |
+
+### CI/CD & Quality
+
+- **GitHub Actions** - Multiple workflows:
+  - `checkers.yml` - Code quality checks
+  - `sonarcloud.yml` - Security and coverage reports
+  - `sphinxdocs.yml` - Auto-generated documentation
+  - `publication-preprod.yml` / `publication-prod.yml` - Deployment pipelines
+- **SonarCloud** - Code quality dashboards and vulnerability scanning
+- **Pre-commit hooks** - Automated checks before commits
+
+### Code Quality Tools
+
+- **Ruff** - Fast Python linting and formatting
+- **Mypy** - Static type checking
+- **Bandit** - Security vulnerability scanner
+- **Sphinx** - API documentation hosted on GitHub Pages
+
+### Development Tools
+
+- **uv** - Modern Python package manager
+- **Makefile** - Task automation (install, format, test, deploy)
+- **VS Code Workspace** - Configured IDE settings
+- **Cookiecutter / Cruft** - Template-based project structure
+
+### Project Management
+
+- **Confluence** - Technical documentation and specs
+- **Jira** - Sprint planning and task tracking
+
+## Pipeline Architecture
+
+### 1. Feature Engineering (Parallel Execution)
+
+Three sub-jobs run concurrently:
+- **SalesFeaturesJob**: Temporal attributes, YoY lag features, 28-day rolling averages
+- **WeatherJob**: Historical and forecast weather alignment
+- **HolidaysJob**: Belgian public holidays and school vacation features
+
+Output: `training_dataset.parquet` and `predictive_dataset.parquet`
 
 ### 2. Model Training
 
-- Trains a **multi-output Prophet model** per sport for forecasting all target variables simultaneously
-- Registers models in **MLflow Model Registry** with versioning
-- Logs parameters and metrics for reproducibility
+- Iterates through configured `sports_to_train` list
+- Trains multi-output Prophet model per sport
+- Registers in MLflow Model Registry with unique naming
+- Logs transformation parameters for prediction context
 
 ### 3. Prediction & Export
 
-- Retrieves latest models from registry for inference
-- Generates forecasts with year-over-year progression analysis
-- Exports results to Google Sheets for business stakeholders
-
-## Technologies Used
-
-- **Python** with Prophet for time-series forecasting
-- **Apache Spark** for distributed data processing
-- **Databricks** for orchestration and compute
-- **MLflow** for experiment tracking and model registry
-- **AWS S3** for data storage
-- **joblib** for parallel processing
-- **Google Sheets API** for business reporting
+- Retrieves latest model version from registry
+- Generates forecasts for specified date range
+- Calculates YoY progression metrics
+- Exports to Google Sheets with department-specific tabs
 
 ## Key Features
 
-- **Parallel Processing**: Uses threading backend to process multiple sports concurrently
-- **Resilient Execution**: Errors in one sport don't halt the entire pipeline
-- **Automated Deployment**: CI/CD with GitHub Actions for preprod and prod environments
-- **Comprehensive Documentation**: Sphinx-generated docs hosted on GitHub Pages
+### Parallel Processing
+Uses `joblib` threading backend (`n_jobs=-1`) for concurrent sport processing, ideal for I/O-bound MLflow operations.
+
+### Resilient Execution
+Errors in individual sports don't halt the pipeline - other sports continue processing.
+
+### Environment Support
+- **Local**: File-based I/O with SQLite MLflow backend
+- **Dev**: S3 data lake with Databricks MLflow tracking
+
+## Technologies Summary
+
+| Category | Technologies |
+|----------|-------------|
+| **ML** | Prophet, scikit-learn, joblib |
+| **Data** | PySpark, Delta Lake, Pandas, NumPy |
+| **MLOps** | Databricks, MLflow, Databricks Bundles |
+| **Cloud** | AWS S3, CodeArtifact, ECR |
+| **CI/CD** | GitHub Actions, SonarCloud |
+| **Quality** | Ruff, Mypy, Bandit, Sphinx |
+| **Tools** | uv, Makefile, Cookiecutter |
+| **Integrations** | Google Sheets API |
 
 ## Results
 
-The pipeline successfully:
 - Predicts sales for **64 sports categories**
-- Processes data from **multiple sources** (sales, weather, holidays)
-- Achieves **accurate demand forecasts** validated against historical data
-- Runs on scheduled jobs in production with **automated model retraining**
-
-## Code Quality
-
-- Static type checking with **mypy**
-- Linting with **ruff**
-- Security analysis with **bandit**
-- Code coverage tracked on **SonarCloud**
+- Forecasts **8 KPIs** per sport (GMV, items by channel)
+- Processes **multi-source data** (sales, weather, holidays)
+- Runs on **scheduled production jobs** with automated retraining
+- Exports to **Google Sheets** for business stakeholders

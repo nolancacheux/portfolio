@@ -39,6 +39,6 @@ next-env.d.ts
 claude.md
 CLAUDE.md
 
-# Local content
-projects/
+# Local content (source projects only, not public images)
+/projects/
 

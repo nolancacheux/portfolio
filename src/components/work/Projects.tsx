@@ -1,5 +1,5 @@
 import { getPosts } from "@/utils/utils";
-import { Column } from "@once-ui-system/core";
+import { Column, Grid } from "@once-ui-system/core";
 import { ProjectCard } from "@/components";
 
 interface ProjectsProps {
@@ -24,7 +24,14 @@ export function Projects({ range, exclude }: ProjectsProps) {
     : sortedProjects;
 
   return (
-    <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
+    <Grid
+      fillWidth
+      columns="repeat(2, 1fr)"
+      mobileColumns="1col"
+      gap="l"
+      marginBottom="40"
+      paddingX="l"
+    >
       {displayedProjects.map((post, index) => (
         <ProjectCard
           priority={index < 2}
@@ -38,6 +45,6 @@ export function Projects({ range, exclude }: ProjectsProps) {
           link={post.metadata.link || ""}
         />
       ))}
-    </Column>
+    </Grid>
   );
 }
