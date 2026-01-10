@@ -1,38 +1,34 @@
 # Nolan Cacheux - Portfolio
 
-Personal portfolio website built with Next.js and Once UI.
+Personal portfolio showcasing my work as an AI & ML Engineer and Freestyle Football athlete.
 
-## About
-
-AI & ML Engineer at Decathlon France and Junior World Champion in Freestyle Football. This portfolio showcases my professional work in machine learning, data science, and my athletic achievements.
+**Live:** [portfolio-nolan-cacheuxs-projects.vercel.app](https://portfolio-nolan-cacheuxs-projects.vercel.app)
 
 ## Tech Stack
 
-- Next.js 16 with App Router
-- Once UI System
-- MDX for content
-- SCSS Modules
-- Vercel deployment
+- **Framework:** Next.js 16 (App Router)
+- **UI:** Once UI System
+- **Content:** MDX
+- **Styling:** SCSS Modules
+- **Deployment:** Vercel
 
-## Projects
+## Featured Projects
 
-- DAISI - Enterprise GenAI chatbot with LangGraph, Google Gemini, and RAG architecture
-- Belgium Sports Sales Forecast - ML pipeline for sales prediction using Prophet and Databricks
-- Freestyle Football - Professional athlete career with 300+ performances
+### DAISI - AI Assistant
+Enterprise GenAI chatbot for Decathlon Finance built with LangGraph, Vertex AI, and RAG architecture on GCP.
 
-## Local Development
+### Belgium Sports Sales Forecast
+ML pipeline for sales prediction using Prophet, Databricks, and MLflow.
+
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Deployment
-
-Deployed on Vercel with GitHub Actions CI/CD.
-
 ## Contact
 
-- Email: cachnolan@gmail.com
-- LinkedIn: linkedin.com/in/nolancacheux
-- GitHub: github.com/nolancacheux
+- [LinkedIn](https://linkedin.com/in/nolancacheux)
+- [GitHub](https://github.com/nolancacheux)
+- cachnolan@gmail.com
