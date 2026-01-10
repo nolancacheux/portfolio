@@ -1,53 +1,55 @@
-.verticalTimeline {
+.horizontalTimeline {
   position: relative;
-  padding-left: 0;
+  width: 100%;
+  padding: var(--static-space-32) 0;
 }
 
-.timelineRow {
-  position: relative;
-  padding-bottom: var(--static-space-24);
+.timelineLine {
+  position: absolute;
+  top: 46px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--brand-alpha-medium);
+}
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 80px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
+.timelinePoints {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+  padding-bottom: var(--static-space-16);
+  gap: var(--static-space-8);
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--neutral-alpha-weak);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
     background: var(--brand-alpha-medium);
-  }
-
-  &:last-child::before {
-    bottom: 50%;
+    border-radius: 3px;
   }
 }
 
-.yearColumn {
-  min-width: 80px;
-  text-align: right;
-  padding-right: var(--static-space-24);
+.timelinePoint {
+  flex: 1;
+  min-width: 120px;
+  max-width: 160px;
+  padding-top: var(--static-space-24);
 }
 
-.achievementsColumn {
-  position: relative;
-  padding-left: var(--static-space-24);
-}
-
-.timelineItem {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: -28px;
-    top: 8px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--brand-solid-strong);
-    border: 2px solid var(--background-page);
-    box-shadow: 0 0 0 2px var(--brand-alpha-medium);
-  }
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--brand-solid-strong);
+  border: 3px solid var(--background-page);
+  box-shadow: 0 0 0 2px var(--brand-alpha-medium);
+  margin-bottom: var(--static-space-8);
 }
 
 .logoContainer {

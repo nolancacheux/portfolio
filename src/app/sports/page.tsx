@@ -55,45 +55,33 @@ export default function Sports() {
       {/* Achievements Timeline */}
       <Column gap="l">
         <Heading as="h2" variant="display-strong-m">Achievements</Heading>
-        <Column className={styles.verticalTimeline}>
-          {(() => {
-            const groupedByYear = sports.achievements.reduce((acc, achievement) => {
-              if (!acc[achievement.year]) acc[achievement.year] = [];
-              acc[achievement.year].push(achievement);
-              return acc;
-            }, {} as Record<string, typeof sports.achievements>);
-
-            return Object.entries(groupedByYear)
-              .sort(([a], [b]) => parseInt(b) - parseInt(a))
-              .map(([year, achievements]) => (
-                <Row key={year} className={styles.timelineRow} gap="l">
-                  <Column className={styles.yearColumn}>
-                    <Text variant="heading-strong-xl" onBackground="brand-strong">
-                      {year}
-                    </Text>
-                  </Column>
-                  <Column className={styles.achievementsColumn} gap="m">
-                    {achievements.map((achievement, index) => (
-                      <Column key={index} className={styles.timelineItem} gap="4">
-                        <Text variant="heading-strong-m">
-                          {achievement.link ? (
-                            <SmartLink href={achievement.link} className={styles.achievementLink}>
-                              {achievement.result}
-                            </SmartLink>
-                          ) : (
-                            achievement.result
-                          )}
-                        </Text>
-                        <Text variant="body-default-s" onBackground="neutral-weak">
-                          {achievement.competition}
-                        </Text>
-                      </Column>
-                    ))}
-                  </Column>
-                </Row>
-              ));
-          })()}
-        </Column>
+        <div className={styles.horizontalTimeline}>
+          <div className={styles.timelineLine} />
+          <Row className={styles.timelinePoints}>
+            {[...sports.achievements]
+              .sort((a, b) => parseInt(a.year) - parseInt(b.year))
+              .map((achievement, index) => (
+                <Column key={index} className={styles.timelinePoint} horizontal="center" gap="8">
+                  <div className={styles.dot} />
+                  <Text variant="heading-strong-l" onBackground="brand-strong">
+                    {achievement.year}
+                  </Text>
+                  <Text variant="heading-strong-s" align="center">
+                    {achievement.link ? (
+                      <SmartLink href={achievement.link} className={styles.achievementLink}>
+                        {achievement.result}
+                      </SmartLink>
+                    ) : (
+                      achievement.result
+                    )}
+                  </Text>
+                  <Text variant="body-default-xs" onBackground="neutral-weak" align="center">
+                    {achievement.competition}
+                  </Text>
+                </Column>
+              ))}
+          </Row>
+        </div>
       </Column>
 
       {/* They Trusted Me */}
