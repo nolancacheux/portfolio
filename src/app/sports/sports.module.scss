@@ -8,7 +8,10 @@
 }
 
 .darkLogo {
-  filter: brightness(0) invert(1);
+  /* Only invert dark logos in dark mode */
+  :global([data-theme="dark"]) & {
+    filter: brightness(0) invert(1);
+  }
 }
 
 .achievementLink {
