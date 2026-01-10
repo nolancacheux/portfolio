@@ -7,9 +7,11 @@ import {
   Meta,
   Row,
   Schema,
+  SmartLink,
   Text,
 } from "@once-ui-system/core";
 import { baseURL, person, sports } from "@/resources";
+import styles from "./sports.module.scss";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -42,7 +44,7 @@ export default function Sports() {
       <Column gap="m" horizontal="center" align="center" paddingY="xl">
         <Heading variant="display-strong-xl">Freestyle Football</Heading>
         <Text variant="heading-default-l" onBackground="neutral-weak" align="center">
-          Junior World Champion | 2x Vice-Champion of France
+          Junior World Champion | 2x Vice-Champion of France | Top 15 World Ranking
         </Text>
         <Text variant="body-default-l" align="center" style={{ maxWidth: "600px" }}>
           Professional Freestyle Football athlete with 6+ years of experience and 300+ performances
@@ -67,7 +69,15 @@ export default function Sports() {
                 {achievement.year}
               </Text>
               <Column gap="4">
-                <Text variant="heading-strong-m">{achievement.result}</Text>
+                <Text variant="heading-strong-m">
+                  {achievement.link ? (
+                    <SmartLink href={achievement.link} className={styles.achievementLink}>
+                      {achievement.result}
+                    </SmartLink>
+                  ) : (
+                    achievement.result
+                  )}
+                </Text>
                 <Text variant="body-default-s" onBackground="neutral-weak">
                   {achievement.competition}
                 </Text>
@@ -84,24 +94,28 @@ export default function Sports() {
           Performances for prestigious brands, sports clubs, and media organizations.
         </Text>
         <Row wrap gap="l" horizontal="center">
-          {sports.trustedBy.map((company, index) => (
-            <Flex
-              key={index}
-              padding="m"
-              background="surface"
-              radius="m"
-              horizontal="center"
-              vertical="center"
-              style={{ width: "120px", height: "80px" }}
-            >
-              <Media
-                src={company.logo}
-                alt={company.name}
-                sizes="100px"
-                style={{ maxHeight: "60px", objectFit: "contain" }}
-              />
-            </Flex>
-          ))}
+          {sports.trustedBy.map((company, index) => {
+            const isDarkLogo = company.logo.includes('daspm-logo-noir') || company.logo.includes('Ferrero_logo');
+            return (
+              <Flex
+                key={index}
+                padding="m"
+                radius="m"
+                horizontal="center"
+                vertical="center"
+                className={styles.logoContainer}
+                style={{ width: "120px", height: "80px" }}
+              >
+                <Media
+                  src={company.logo}
+                  alt={company.name}
+                  sizes="100px"
+                  className={isDarkLogo ? styles.darkLogo : undefined}
+                  style={{ maxHeight: "60px", objectFit: "contain" }}
+                />
+              </Flex>
+            );
+          })}
         </Row>
       </Column>
 
