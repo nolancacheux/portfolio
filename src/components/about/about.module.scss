@@ -34,6 +34,38 @@
     }
 }
 
+.timeline {
+    position: relative;
+    padding-left: 24px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        bottom: 8px;
+        width: 2px;
+        background: var(--brand-alpha-medium);
+    }
+}
+
+.timelineItem {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: -28px;
+        top: 8px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--brand-solid-strong);
+        border: 2px solid var(--background-page);
+        box-shadow: 0 0 0 2px var(--brand-alpha-medium);
+    }
+}
+
 @media (max-width: breakpoints.$s) {
     .textAlign {
         text-align: center;
