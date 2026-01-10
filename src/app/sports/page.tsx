@@ -98,17 +98,16 @@ export default function Sports() {
             return (
               <Flex
                 key={index}
-                padding="s"
+                padding="m"
                 radius="m"
                 horizontal="center"
                 vertical="center"
                 className={styles.logoContainer}
-                style={{ width: "80px", height: "60px" }}
+                style={{ width: "100px", height: "80px" }}
               >
-                <Media
+                <img
                   src={company.logo}
                   alt={company.name}
-                  sizes="60px"
                   className={`${styles.logoImage} ${isDarkLogo ? styles.darkLogo : ''}`}
                 />
               </Flex>
