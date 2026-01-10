@@ -204,8 +204,20 @@ export default function About() {
           </Column>
 
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
+            <Column fillWidth gap="l" marginBottom="xl">
+              <Column textVariant="body-default-l" fillWidth gap="m">
+                {about.intro.description}
+              </Column>
+              {about.intro.highlights && about.intro.highlights.length > 0 && (
+                <Column fillWidth gap="m" className={styles.timeline} marginTop="m">
+                  {about.intro.highlights.map((highlight, index) => (
+                    <Row key={index} className={styles.timelineItem} gap="8" vertical="center">
+                      <Text variant="heading-strong-m">{highlight.title}</Text>
+                      <Text variant="body-default-s" onBackground="neutral-weak">— {highlight.detail}</Text>
+                    </Row>
+                  ))}
+                </Column>
+              )}
             </Column>
           )}
 

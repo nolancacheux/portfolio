@@ -89,12 +89,17 @@ const about: About = {
     description: (
       <>
         AI & ML Engineer at Decathlon France within the Effilab AI team, the company's center of excellence
-        dedicated to improving operational efficiency through Data Science and Innovation. Beyond tech, I'm also a
-        <strong>Junior World Champion in Freestyle Football</strong> (Prague 2019), <strong>2x Vice-Champion of France</strong> (2024, 2025),
-        and currently ranked <strong>Top 15 worldwide</strong>, combining athletic excellence with technical expertise. Currently pursuing my Master's degree (M2) in Data Science
-        at JUNIA ISEN, I specialize in developing end-to-end machine learning pipelines that drive business value.
+        dedicated to improving operational efficiency through Data Science and Innovation. Currently pursuing
+        my Master's degree (M2) in Data Science at JUNIA ISEN, I specialize in developing end-to-end machine
+        learning pipelines that drive business value. Beyond tech, I combine athletic excellence with technical
+        expertise as a professional Freestyle Football athlete.
       </>
     ),
+    highlights: [
+      { title: "Junior World Champion", detail: "Prague, 2019" },
+      { title: "2x Vice-Champion of France", detail: "2024, 2025" },
+      { title: "Top 15 World Ranking", detail: "Current" },
+    ],
   },
   work: {
     display: true,

@@ -135,6 +135,11 @@ export interface About extends BasePageConfig {
     title: string;
     /** Description of the introduction section */
     description: React.ReactNode;
+    /** Key achievements/highlights to display as timeline */
+    highlights?: Array<{
+      title: string;
+      detail: string;
+    }>;
   };
   /** Work experience section */
   work: {
