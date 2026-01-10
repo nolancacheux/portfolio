@@ -120,9 +120,21 @@ export default async function Project({
       </Row>
       {post.metadata.images.length > 0 && (
         post.metadata.images.length > 1 ? (
-          <Row fillWidth gap="m" wrap style={{ maxWidth: "100%", overflow: "hidden" }}>
+          <Row fillWidth gap="m" wrap vertical="center" style={{ maxWidth: "100%", overflow: "hidden" }}>
             {post.metadata.images.map((image: string, index: number) => (
-              <Flex key={index} style={{ flex: "1 1 280px", maxWidth: "calc(33.333% - 8px)", minWidth: "200px" }}>
+              <Flex
+                key={index}
+                horizontal="center"
+                vertical="center"
+                style={{
+                  flex: "1 1 280px",
+                  maxWidth: "calc(33.333% - 8px)",
+                  minWidth: "200px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
                 <Media
                   priority={index === 0}
                   aspectRatio="16 / 9"
