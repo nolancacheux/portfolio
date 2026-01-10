@@ -53,8 +53,8 @@ export default function Sports() {
       </Column>
 
       {/* Achievements Timeline */}
-      <Column gap="l">
-        <Heading as="h2" variant="display-strong-m">Achievements</Heading>
+      <Column gap="l" horizontal="center">
+        <Heading as="h2" variant="display-strong-m" align="center">Achievements</Heading>
         <div className={styles.horizontalTimeline}>
           <div className={styles.timelineLine} />
           <Row className={styles.timelinePoints}>
@@ -85,9 +85,9 @@ export default function Sports() {
       </Column>
 
       {/* They Trusted Me */}
-      <Column gap="l">
-        <Heading as="h2" variant="display-strong-m">They Trusted Me</Heading>
-        <Text variant="body-default-l" onBackground="neutral-weak">
+      <Column gap="l" horizontal="center">
+        <Heading as="h2" variant="display-strong-m" align="center">They Trusted Me</Heading>
+        <Text variant="body-default-l" onBackground="neutral-weak" align="center">
           Performances for prestigious brands, sports clubs, and media organizations.
         </Text>
         <Row wrap gap="l" horizontal="center">

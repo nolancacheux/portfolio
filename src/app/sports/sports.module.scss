@@ -1,12 +1,12 @@
 .horizontalTimeline {
   position: relative;
   width: 100%;
-  padding: var(--static-space-32) 0;
+  padding: var(--static-space-48) 0 var(--static-space-16) 0;
 }
 
 .timelineLine {
   position: absolute;
-  top: 46px;
+  top: 40px;
   left: 0;
   right: 0;
   height: 2px;
@@ -36,26 +36,30 @@
 }
 
 .timelinePoint {
+  position: relative;
   flex: 1;
   min-width: 120px;
   max-width: 160px;
-  padding-top: var(--static-space-24);
+  padding-top: var(--static-space-32);
 }
 
 .dot {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 14px;
   height: 14px;
   border-radius: 50%;
   background: var(--brand-solid-strong);
   border: 3px solid var(--background-page);
   box-shadow: 0 0 0 2px var(--brand-alpha-medium);
-  margin-bottom: var(--static-space-8);
 }
 
 .logoContainer {
   background: rgba(255, 255, 255, 0.08);
   transition: background 0.2s ease;
-  overflow: visible;
+  overflow: hidden;
 
   &:hover {
     background: rgba(255, 255, 255, 0.12);
@@ -63,10 +67,10 @@
 }
 
 .logoImage {
-  max-height: 100px;
-  max-width: 120px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  object-position: center;
+  object-position: center center;
 }
 
 .darkLogo {
