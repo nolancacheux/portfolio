@@ -407,7 +407,6 @@ const sports: Sports = {
   ],
   images: [
     { src: "/images/freestyle/image00001.jpeg", alt: "Freestyle Football Performance" },
-    { src: "/images/freestyle/image00002.jpeg", alt: "Freestyle Football Show" },
     { src: "/images/freestyle/image00003.jpeg", alt: "Freestyle Football Event" },
     { src: "/images/freestyle/image00004.jpeg", alt: "Freestyle Football Demo" },
     { src: "/images/freestyle/image00008.jpeg", alt: "Freestyle Football Action" },
