@@ -21,12 +21,12 @@ const routes: RoutesConfig = {
   "/about": true,
   "/work": true,
   "/sports": true,
-  "/blog": true,
+  "/blog": false,
   "/gallery": false,
 };
 
 const display: DisplayConfig = {
-  location: true,
+  location: false,
   time: true,
   themeSwitcher: true,
 };
