@@ -249,6 +249,7 @@ export interface Sports extends BasePageConfig {
     year: string;
     competition: string;
     result: string;
+    link?: string;
   }>;
   /** Trusted companies/organizations */
   trustedBy: Array<{

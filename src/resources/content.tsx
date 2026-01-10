@@ -90,8 +90,8 @@ const about: About = {
       <>
         AI & ML Engineer at Decathlon France within the Effilab AI team, the company's center of excellence
         dedicated to improving operational efficiency through Data Science and Innovation. Beyond tech, I'm also a
-        <strong> Junior World Champion in Freestyle Football</strong> (Prague 2019) and <strong>2x Vice-Champion of France</strong> (2022, 2023),
-        combining athletic excellence with technical expertise. Currently pursuing my Master's degree (M2) in Data Science
+        <strong>Junior World Champion in Freestyle Football</strong> (Prague 2019), <strong>2x Vice-Champion of France</strong> (2024, 2025),
+        and currently ranked <strong>Top 15 worldwide</strong>, combining athletic excellence with technical expertise. Currently pursuing my Master's degree (M2) in Data Science
         at JUNIA ISEN, I specialize in developing end-to-end machine learning pipelines that drive business value.
       </>
     ),
@@ -210,52 +210,134 @@ const about: About = {
       {
         title: "Machine Learning & AI",
         description: (
-          <>Expert in building and deploying ML models, from experimentation to production. Specialized in time-series forecasting, NLP, and LLM applications.</>
+          <>Building production-ready ML/AI systems from experimentation to deployment. Specialized in time-series forecasting, NLP, RAG architectures, and LLM applications.</>
         ),
         tags: [
           { name: "Python", icon: "python" },
-          { name: "Scikit-learn", icon: "code" },
-          { name: "TensorFlow", icon: "code" },
           { name: "LangChain", icon: "code" },
+          { name: "LangGraph", icon: "code" },
+          { name: "TensorFlow", icon: "code" },
+          { name: "scikit-learn", icon: "code" },
+          { name: "Prophet", icon: "code" },
+          { name: "FAISS", icon: "code" },
+          { name: "Google Gemini", icon: "code" },
+          { name: "LiteLLM", icon: "code" },
         ],
         images: [],
       },
       {
-        title: "MLOps & Cloud",
+        title: "MLOps & Model Lifecycle",
         description: (
-          <>Building scalable ML pipelines with CI/CD, model versioning, and monitoring. Experience with major cloud platforms.</>
+          <>End-to-end ML pipeline orchestration with experiment tracking, model versioning, registry management, and production monitoring.</>
         ),
         tags: [
           { name: "MLflow", icon: "code" },
           { name: "Databricks", icon: "code" },
-          { name: "Google Cloud", icon: "code" },
-          { name: "Azure", icon: "code" },
+          { name: "Model Armor", icon: "code" },
+          { name: "Vertex AI", icon: "code" },
+          { name: "Vertex AI Vector Search", icon: "code" },
         ],
         images: [],
       },
       {
-        title: "Data Engineering",
+        title: "Cloud Platforms",
         description: (
-          <>Processing large-scale data with distributed computing frameworks and building robust data pipelines.</>
+          <>Designing and deploying scalable cloud infrastructure across major providers with serverless and containerized architectures.</>
+        ),
+        tags: [
+          { name: "Google Cloud Platform", icon: "code" },
+          { name: "AWS", icon: "code" },
+          { name: "Azure", icon: "code" },
+          { name: "Cloud Run", icon: "code" },
+          { name: "Cloud SQL", icon: "code" },
+          { name: "Cloud Storage", icon: "code" },
+          { name: "Cloud Scheduler", icon: "code" },
+          { name: "S3", icon: "code" },
+          { name: "ECR", icon: "code" },
+          { name: "CodeArtifact", icon: "code" },
+        ],
+        images: [],
+      },
+      {
+        title: "Big Data & Data Engineering",
+        description: (
+          <>Processing large-scale datasets with distributed computing frameworks and building robust, scalable data pipelines.</>
         ),
         tags: [
           { name: "Apache Spark", icon: "code" },
-          { name: "SQL", icon: "code" },
+          { name: "PySpark", icon: "code" },
+          { name: "Delta Lake", icon: "code" },
           { name: "Pandas", icon: "code" },
-          { name: "Airflow", icon: "code" },
+          { name: "NumPy", icon: "code" },
+          { name: "PostgreSQL", icon: "code" },
         ],
         images: [],
       },
       {
-        title: "Software Development",
+        title: "Backend & APIs",
         description: (
-          <>Full-stack development capabilities with modern frameworks and best practices.</>
+          <>Building high-performance async APIs and backend services with modern Python frameworks.</>
+        ),
+        tags: [
+          { name: "FastAPI", icon: "code" },
+          { name: "Uvicorn", icon: "code" },
+          { name: "Pydantic", icon: "code" },
+        ],
+        images: [],
+      },
+      {
+        title: "Infrastructure & DevOps",
+        description: (
+          <>Infrastructure as code, containerization, and CI/CD pipelines for automated, reproducible deployments.</>
+        ),
+        tags: [
+          { name: "Terraform", icon: "code" },
+          { name: "Docker", icon: "code" },
+          { name: "GitHub Actions", icon: "github" },
+          { name: "SonarCloud", icon: "code" },
+          { name: "Pre-commit", icon: "code" },
+        ],
+        images: [],
+      },
+      {
+        title: "Code Quality & Observability",
+        description: (
+          <>Ensuring code quality through static analysis, testing, and comprehensive observability with distributed tracing.</>
+        ),
+        tags: [
+          { name: "Ruff", icon: "code" },
+          { name: "Mypy", icon: "code" },
+          { name: "Bandit", icon: "code" },
+          { name: "Pytest", icon: "code" },
+          { name: "OpenTelemetry", icon: "code" },
+          { name: "Cloud Logging", icon: "code" },
+        ],
+        images: [],
+      },
+      {
+        title: "Frontend & Full-Stack",
+        description: (
+          <>Modern frontend development with React ecosystem and server-side rendering capabilities.</>
         ),
         tags: [
           { name: "React.js", icon: "code" },
           { name: "Next.js", icon: "nextjs" },
+          { name: "TypeScript", icon: "code" },
+        ],
+        images: [],
+      },
+      {
+        title: "Development Tools",
+        description: (
+          <>Modern developer tooling for efficient workflows and project management.</>
+        ),
+        tags: [
+          { name: "uv", icon: "code" },
+          { name: "Makefile", icon: "code" },
+          { name: "VS Code", icon: "code" },
           { name: "Git", icon: "github" },
-          { name: "Docker", icon: "code" },
+          { name: "Jira", icon: "code" },
+          { name: "Confluence", icon: "code" },
         ],
         images: [],
       },
@@ -295,12 +377,14 @@ const sports: Sports = {
   path: "/sports",
   label: "Sports",
   title: `Freestyle Football – ${person.name}`,
-  description: `Junior World Champion and 2x Vice-Champion of France in Freestyle Football`,
+  description: `Junior World Champion, 2x Naostyle Champion, 2x Vice-Champion of France, and Top 15 World Ranking`,
   achievements: [
-    { year: "2019", competition: "World Championship (Prague)", result: "Junior World Champion" },
-    { year: "2022", competition: "Red Bull Street Style France", result: "Vice-Champion of France" },
-    { year: "2023", competition: "Red Bull Street Style France", result: "Vice-Champion of France" },
+    { year: "2019", competition: "World Championship (Prague, Czech Republic)", result: "Junior World Champion" },
     { year: "2023", competition: "Naostyle Cup", result: "Champion" },
+    { year: "2024", competition: "Naostyle Cup", result: "Champion" },
+    { year: "2024", competition: "French Championship", result: "Vice-Champion of France" },
+    { year: "2025", competition: "French Championship", result: "Vice-Champion of France" },
+    { year: "2026", competition: "World Ranking", result: "Top 15 Worldwide", link: "https://worldfreestylefootball.org/freestyle-football-world-rankings/" },
   ],
   trustedBy: [
     { name: "LOSC Lille", logo: "/images/freestyle/1200px-Logo_LOSC_Lille_2018.svg.png", category: "Sports Club" },
