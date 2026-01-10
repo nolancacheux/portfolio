@@ -262,6 +262,15 @@ export default function About() {
                         ))}
                       </Row>
                     )}
+                    {experience.tags && experience.tags.length > 0 && (
+                      <Row fillWidth paddingTop="m" gap="8" wrap>
+                        {experience.tags.map((tag, tagIndex) => (
+                          <Tag key={tagIndex} size="m" variant="neutral">
+                            {tag.name}
+                          </Tag>
+                        ))}
+                      </Row>
+                    )}
                   </Column>
                 ))}
               </Column>

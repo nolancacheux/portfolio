@@ -117,7 +117,22 @@ const about: About = {
             Building end-to-end ML pipelines with a focus on scalability, monitoring, and continuous improvement.
           </>,
         ],
-        images: [],
+        images: [
+          {
+            src: "/images/projects/daisi/daisi-image-1.png",
+            alt: "DAISI AI Assistant",
+            width: 16,
+            height: 9,
+          },
+        ],
+        tags: [
+          { name: "LangChain" },
+          { name: "LangGraph" },
+          { name: "GCP" },
+          { name: "Terraform" },
+          { name: "FastAPI" },
+          { name: "MLflow" },
+        ],
       },
       {
         company: "Decathlon Belgium",
@@ -145,6 +160,13 @@ const about: About = {
             height: 9,
           },
         ],
+        tags: [
+          { name: "Prophet" },
+          { name: "Apache Spark" },
+          { name: "Databricks" },
+          { name: "MLflow" },
+          { name: "Python" },
+        ],
       },
       {
         company: "Beobank NV/SA",
@@ -161,6 +183,12 @@ const about: About = {
           </>,
         ],
         images: [],
+        tags: [
+          { name: "Python" },
+          { name: "SQL" },
+          { name: "Pandas" },
+          { name: "NumPy" },
+        ],
       },
     ],
   },

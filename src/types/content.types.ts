@@ -163,6 +163,11 @@ export interface About extends BasePageConfig {
         /** Image height ratio */
         height: number;
       }>;
+      /** Technology tags for the experience */
+      tags?: Array<{
+        name: string;
+        icon?: string;
+      }>;
     }>;
   };
   /** Studies/education section */
