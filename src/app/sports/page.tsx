@@ -52,39 +52,39 @@ export default function Sports() {
         </Text>
       </Column>
 
-      {/* Achievements */}
+      {/* Achievements Timeline */}
       <Column gap="l">
         <Heading as="h2" variant="display-strong-m">Achievements</Heading>
-        <Grid columns={2} s={{ columns: 1 }} gap="m">
+        <Row className={styles.horizontalTimeline} gap="m">
           {sports.achievements.map((achievement, index) => (
-            <Row
+            <Column
               key={index}
               padding="l"
               background="surface"
               radius="l"
-              gap="m"
-              vertical="center"
+              gap="8"
+              horizontal="center"
+              align="center"
+              className={styles.timelineCard}
             >
               <Text variant="heading-strong-xl" onBackground="brand-strong">
                 {achievement.year}
               </Text>
-              <Column gap="4">
-                <Text variant="heading-strong-m">
-                  {achievement.link ? (
-                    <SmartLink href={achievement.link} className={styles.achievementLink}>
-                      {achievement.result}
-                    </SmartLink>
-                  ) : (
-                    achievement.result
-                  )}
-                </Text>
-                <Text variant="body-default-s" onBackground="neutral-weak">
-                  {achievement.competition}
-                </Text>
-              </Column>
-            </Row>
+              <Text variant="heading-strong-m" align="center">
+                {achievement.link ? (
+                  <SmartLink href={achievement.link} className={styles.achievementLink}>
+                    {achievement.result}
+                  </SmartLink>
+                ) : (
+                  achievement.result
+                )}
+              </Text>
+              <Text variant="body-default-s" onBackground="neutral-weak" align="center">
+                {achievement.competition}
+              </Text>
+            </Column>
           ))}
-        </Grid>
+        </Row>
       </Column>
 
       {/* They Trusted Me */}
@@ -95,7 +95,9 @@ export default function Sports() {
         </Text>
         <Row wrap gap="l" horizontal="center">
           {sports.trustedBy.map((company, index) => {
-            const isDarkLogo = company.logo.includes('daspm-logo-noir') || company.logo.includes('Ferrero_logo');
+            const isDarkLogo = company.logo.includes('daspm-logo-noir') ||
+                              company.logo.includes('Ferrero_logo') ||
+                              company.logo.includes('France_3');
             return (
               <Flex
                 key={index}
@@ -104,14 +106,14 @@ export default function Sports() {
                 horizontal="center"
                 vertical="center"
                 className={styles.logoContainer}
-                style={{ width: "120px", height: "80px" }}
+                style={{ width: "140px", height: "100px" }}
               >
                 <Media
                   src={company.logo}
                   alt={company.name}
-                  sizes="100px"
+                  sizes="120px"
                   className={isDarkLogo ? styles.darkLogo : undefined}
-                  style={{ maxHeight: "60px", objectFit: "contain" }}
+                  style={{ maxHeight: "80px", objectFit: "contain" }}
                 />
               </Flex>
             );

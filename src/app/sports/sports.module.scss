@@ -1,3 +1,32 @@
+.horizontalTimeline {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: var(--static-space-16);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--neutral-alpha-weak);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--brand-alpha-medium);
+    border-radius: 3px;
+  }
+}
+
+.timelineCard {
+  flex-shrink: 0;
+  min-width: 200px;
+  max-width: 240px;
+  scroll-snap-align: start;
+}
+
 .logoContainer {
   background: rgba(255, 255, 255, 0.08);
   transition: background 0.2s ease;
