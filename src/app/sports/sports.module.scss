@@ -1,12 +1,12 @@
 .horizontalTimeline {
   position: relative;
   width: 100%;
-  padding: var(--static-space-48) 0 var(--static-space-16) 0;
+  padding: var(--static-space-16) 0;
 }
 
 .timelineLine {
   position: absolute;
-  top: 40px;
+  top: 24px;
   left: 0;
   right: 0;
   height: 2px;
@@ -17,7 +17,8 @@
   display: flex;
   justify-content: space-between;
   overflow-x: auto;
-  padding-bottom: var(--static-space-16);
+  overflow-y: visible;
+  padding: var(--static-space-16) 0;
   gap: var(--static-space-8);
 
   &::-webkit-scrollbar {
@@ -40,20 +41,21 @@
   flex: 1;
   min-width: 120px;
   max-width: 160px;
-  padding-top: var(--static-space-32);
+  padding-top: var(--static-space-24);
 }
 
 .dot {
   position: absolute;
-  top: -7px;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 14px;
   height: 14px;
   border-radius: 50%;
   background: var(--brand-solid-strong);
   border: 3px solid var(--background-page);
   box-shadow: 0 0 0 2px var(--brand-alpha-medium);
+  z-index: 1;
 }
 
 .logoContainer {
