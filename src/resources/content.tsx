@@ -252,7 +252,6 @@ const about: About = {
           { name: "TensorFlow", icon: "code" },
           { name: "scikit-learn", icon: "code" },
           { name: "Prophet", icon: "code" },
-          { name: "FAISS", icon: "code" },
         ],
         images: [],
       },
@@ -265,6 +264,20 @@ const about: About = {
           { name: "MLflow", icon: "code" },
           { name: "Databricks", icon: "code" },
           { name: "Vertex AI", icon: "code" },
+        ],
+        images: [],
+      },
+      {
+        title: "Vector Databases",
+        description: (
+          <>Specialized databases for semantic search, RAG architectures, and similarity matching with high-dimensional embeddings.</>
+        ),
+        tags: [
+          { name: "Qdrant", icon: "code" },
+          { name: "Vertex AI Vector Search", icon: "code" },
+          { name: "Chroma DB", icon: "code" },
+          { name: "Pinecone", icon: "code" },
+          { name: "FAISS", icon: "code" },
         ],
         images: [],
       },
