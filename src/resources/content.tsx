@@ -271,7 +271,6 @@ const about: About = {
         tags: [
           { name: "Google Cloud Platform", icon: "code" },
           { name: "AWS", icon: "code" },
-          { name: "Azure", icon: "code" },
           { name: "Cloud Run", icon: "code" },
           { name: "Cloud SQL", icon: "code" },
           { name: "Cloud Storage", icon: "code" },
@@ -299,12 +298,17 @@ const about: About = {
       {
         title: "Backend & APIs",
         description: (
-          <>Building high-performance async APIs and backend services with modern Python frameworks.</>
+          <>Building high-performance async APIs and backend services with modern Python and Node.js frameworks.</>
         ),
         tags: [
           { name: "FastAPI", icon: "code" },
+          { name: "NestJS", icon: "code" },
+          { name: "Express.js", icon: "code" },
+          { name: "Flask", icon: "code" },
           { name: "Uvicorn", icon: "code" },
           { name: "Pydantic", icon: "code" },
+          { name: "Prisma", icon: "code" },
+          { name: "SQLAlchemy", icon: "code" },
         ],
         images: [],
       },
@@ -318,21 +322,6 @@ const about: About = {
           { name: "Docker", icon: "code" },
           { name: "GitHub Actions", icon: "github" },
           { name: "SonarCloud", icon: "code" },
-          { name: "Pre-commit", icon: "code" },
-        ],
-        images: [],
-      },
-      {
-        title: "Code Quality & Observability",
-        description: (
-          <>Ensuring code quality through static analysis, testing, and comprehensive observability with distributed tracing.</>
-        ),
-        tags: [
-          { name: "Pytest", icon: "code" },
-          { name: "OpenTelemetry", icon: "code" },
-          { name: "Airflow", icon: "code" },
-          { name: "Ruff", icon: "code" },
-          { name: "Mypy", icon: "code" },
         ],
         images: [],
       },
