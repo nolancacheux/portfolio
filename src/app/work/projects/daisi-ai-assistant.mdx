@@ -55,7 +55,7 @@ The application includes automated maintenance jobs orchestrated by Cloud Schedu
 |-----|----------|---------|
 | **TTL Cleanup** | Daily 03:00 | GDPR compliance - deletes checkpoints and MLflow traces older than 12 months |
 | **Trace Evaluation** | Daily 04:00 | LLM-as-Judge quality scoring with custom scorers (relevance, language consistency, conciseness) |
-| **Data Sync** | On config update | Syncs knowledge base from Google Sheets to GCS via Eventarc triggers |
+| **Data Sync** | On config update | Syncs knowledge base from Google Sheets to GCS |
 
 ### Infrastructure as Code
 
@@ -67,7 +67,6 @@ The application includes automated maintenance jobs orchestrated by Cloud Schedu
   - `model-armor` - Security template configuration
   - `vertex-ai-vector-search` - Vector index management
   - `storage` - GCS bucket configuration
-  - `eventarc` - Event-driven triggers
 
 ### DevOps & CI/CD
 
@@ -114,7 +113,7 @@ PostgreSQL-backed checkpointer for persistent conversation state with IAM authen
 | **AI/ML** | LangGraph, LangChain, Google Gemini, Vertex AI Vector Search, FAISS, Model Armor |
 | **Backend** | Python 3.11, FastAPI, Uvicorn, Pydantic |
 | **Database** | Cloud SQL PostgreSQL, langgraph-checkpoint-postgres, psycopg3 |
-| **Cloud** | GCP, Cloud Run, Cloud Run Jobs, Cloud Scheduler, Eventarc, GCS |
+| **Cloud** | GCP, Cloud Run, Cloud Run Jobs, Cloud Scheduler, GCS |
 | **Observability** | MLflow, LiteLLM, OpenTelemetry |
 | **Infrastructure** | Terraform, Docker |
 | **CI/CD** | GitHub Actions, SonarCloud, Pre-commit |
