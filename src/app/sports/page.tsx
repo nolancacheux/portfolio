@@ -118,8 +118,8 @@ export default function Sports() {
       </Column>
 
       {/* Services */}
-      <Column gap="l">
-        <Heading as="h2" variant="display-strong-m">Services</Heading>
+      <Column gap="l" horizontal="center">
+        <Heading as="h2" variant="display-strong-m" align="center">Services</Heading>
         <Grid columns={3} s={{ columns: 1 }} gap="m">
           <Column padding="l" background="surface" radius="l" gap="s">
             <Heading as="h3" variant="heading-strong-l">Shows</Heading>
@@ -144,8 +144,8 @@ export default function Sports() {
       </Column>
 
       {/* Gallery */}
-      <Column gap="l">
-        <Heading as="h2" variant="display-strong-m">Gallery</Heading>
+      <Column gap="l" horizontal="center">
+        <Heading as="h2" variant="display-strong-m" align="center">Gallery</Heading>
         <Grid columns={3} s={{ columns: 2 }} gap="m">
           {sports.images.map((image, index) => (
             <Media

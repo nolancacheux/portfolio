@@ -6,7 +6,7 @@
 
 .timelineLine {
   position: absolute;
-  top: 6px;
+  top: 5px;
   left: 0;
   right: 0;
   height: 2px;
@@ -26,7 +26,7 @@
   flex: 1;
   min-width: 120px;
   max-width: 180px;
-  padding-top: 24px;
+  padding-top: 20px;
   overflow: visible;
 }
 
@@ -34,10 +34,9 @@
   position: absolute;
   top: 0;
   left: 50%;
+  transform: translate(-50%, -50%);
   width: 12px;
   height: 12px;
-  margin-top: -6px;
-  margin-left: -6px;
   border-radius: 50%;
   background: var(--brand-solid-strong);
   border: 2px solid var(--background-page);
