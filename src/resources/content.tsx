@@ -115,11 +115,13 @@ const about: About = {
             challenges into intelligent solutions to improve company efficiency.
           </>,
           <>
-            Developing and deploying production-ready AI solutions using LangChain, MLOps best practices,
-            and cloud infrastructure.
+            <strong>Built DAISI (Decathlon AI Suppliers Information)</strong> — an AI chatbot providing instant answers
+            about supplier processes, trained on internal procedures and connected to tools like eOne,
+            with escalation capabilities to accountants. <strong>Impact: 13,000 hours/year saved</strong> for the suppliers team.
           </>,
           <>
-            Building end-to-end ML pipelines with a focus on scalability, monitoring, and continuous improvement.
+            Developing production-ready RAG architectures using LangChain, LangGraph, and Vector Databases
+            with GCP cloud infrastructure and Terraform IaC.
           </>,
         ],
         images: [
@@ -133,6 +135,7 @@ const about: About = {
         tags: [
           { name: "LangChain" },
           { name: "LangGraph" },
+          { name: "RAG" },
           { name: "GCP" },
           { name: "Terraform" },
           { name: "FastAPI" },
