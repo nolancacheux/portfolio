@@ -1,61 +1,48 @@
 .horizontalTimeline {
   position: relative;
   width: 100%;
-  padding: var(--static-space-16) 0;
+  overflow: visible;
 }
 
 .timelineLine {
   position: absolute;
-  top: 24px;
+  top: 6px;
   left: 0;
   right: 0;
   height: 2px;
   background: var(--brand-alpha-medium);
+  z-index: 0;
 }
 
 .timelinePoints {
   display: flex;
   justify-content: space-between;
-  overflow-x: auto;
-  overflow-y: visible;
-  padding: var(--static-space-16) 0;
-  gap: var(--static-space-8);
-
-  &::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: var(--neutral-alpha-weak);
-    border-radius: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--brand-alpha-medium);
-    border-radius: 3px;
-  }
+  gap: var(--static-space-16);
+  overflow: visible;
 }
 
 .timelinePoint {
   position: relative;
   flex: 1;
   min-width: 120px;
-  max-width: 160px;
-  padding-top: var(--static-space-24);
+  max-width: 180px;
+  padding-top: 24px;
+  overflow: visible;
 }
 
 .dot {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  margin-left: -6px;
   border-radius: 50%;
   background: var(--brand-solid-strong);
-  border: 3px solid var(--background-page);
+  border: 2px solid var(--background-page);
   box-shadow: 0 0 0 2px var(--brand-alpha-medium);
-  z-index: 1;
+  z-index: 2;
 }
 
 .logoContainer {

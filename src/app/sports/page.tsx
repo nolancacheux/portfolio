@@ -90,7 +90,7 @@ export default function Sports() {
         <Text variant="body-default-l" onBackground="neutral-weak" align="center">
           Performances for prestigious brands, sports clubs, and media organizations.
         </Text>
-        <Row wrap gap="l" horizontal="center">
+        <Row wrap gap="m" horizontal="center">
           {sports.trustedBy.map((company, index) => {
             const isDarkLogo = company.logo.includes('daspm-logo-noir') ||
                               company.logo.includes('Ferrero_logo') ||
@@ -98,17 +98,17 @@ export default function Sports() {
             return (
               <Flex
                 key={index}
-                padding="m"
+                padding="s"
                 radius="m"
                 horizontal="center"
                 vertical="center"
                 className={styles.logoContainer}
-                style={{ width: "140px", height: "120px" }}
+                style={{ width: "80px", height: "60px" }}
               >
                 <Media
                   src={company.logo}
                   alt={company.name}
-                  sizes="120px"
+                  sizes="60px"
                   className={`${styles.logoImage} ${isDarkLogo ? styles.darkLogo : ''}`}
                 />
               </Flex>
