@@ -1,39 +1,70 @@
-.horizontalTimeline {
-  display: flex;
-  overflow-x: auto;
-  padding-bottom: var(--static-space-16);
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+.verticalTimeline {
+  position: relative;
+  padding-left: 0;
+}
 
-  &::-webkit-scrollbar {
-    height: 6px;
-  }
+.timelineRow {
+  position: relative;
+  padding-bottom: var(--static-space-24);
 
-  &::-webkit-scrollbar-track {
-    background: var(--neutral-alpha-weak);
-    border-radius: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb {
+  &::before {
+    content: '';
+    position: absolute;
+    left: 80px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
     background: var(--brand-alpha-medium);
-    border-radius: 3px;
+  }
+
+  &:last-child::before {
+    bottom: 50%;
   }
 }
 
-.timelineCard {
-  flex-shrink: 0;
-  min-width: 200px;
-  max-width: 240px;
-  scroll-snap-align: start;
+.yearColumn {
+  min-width: 80px;
+  text-align: right;
+  padding-right: var(--static-space-24);
+}
+
+.achievementsColumn {
+  position: relative;
+  padding-left: var(--static-space-24);
+}
+
+.timelineItem {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--brand-solid-strong);
+    border: 2px solid var(--background-page);
+    box-shadow: 0 0 0 2px var(--brand-alpha-medium);
+  }
 }
 
 .logoContainer {
   background: rgba(255, 255, 255, 0.08);
   transition: background 0.2s ease;
+  overflow: visible;
 
   &:hover {
     background: rgba(255, 255, 255, 0.12);
   }
+}
+
+.logoImage {
+  max-height: 100px;
+  max-width: 120px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .darkLogo {

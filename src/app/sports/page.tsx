@@ -55,36 +55,45 @@ export default function Sports() {
       {/* Achievements Timeline */}
       <Column gap="l">
         <Heading as="h2" variant="display-strong-m">Achievements</Heading>
-        <Row className={styles.horizontalTimeline} gap="m">
-          {sports.achievements.map((achievement, index) => (
-            <Column
-              key={index}
-              padding="l"
-              background="surface"
-              radius="l"
-              gap="8"
-              horizontal="center"
-              align="center"
-              className={styles.timelineCard}
-            >
-              <Text variant="heading-strong-xl" onBackground="brand-strong">
-                {achievement.year}
-              </Text>
-              <Text variant="heading-strong-m" align="center">
-                {achievement.link ? (
-                  <SmartLink href={achievement.link} className={styles.achievementLink}>
-                    {achievement.result}
-                  </SmartLink>
-                ) : (
-                  achievement.result
-                )}
-              </Text>
-              <Text variant="body-default-s" onBackground="neutral-weak" align="center">
-                {achievement.competition}
-              </Text>
-            </Column>
-          ))}
-        </Row>
+        <Column className={styles.verticalTimeline}>
+          {(() => {
+            const groupedByYear = sports.achievements.reduce((acc, achievement) => {
+              if (!acc[achievement.year]) acc[achievement.year] = [];
+              acc[achievement.year].push(achievement);
+              return acc;
+            }, {} as Record<string, typeof sports.achievements>);
+
+            return Object.entries(groupedByYear)
+              .sort(([a], [b]) => parseInt(b) - parseInt(a))
+              .map(([year, achievements]) => (
+                <Row key={year} className={styles.timelineRow} gap="l">
+                  <Column className={styles.yearColumn}>
+                    <Text variant="heading-strong-xl" onBackground="brand-strong">
+                      {year}
+                    </Text>
+                  </Column>
+                  <Column className={styles.achievementsColumn} gap="m">
+                    {achievements.map((achievement, index) => (
+                      <Column key={index} className={styles.timelineItem} gap="4">
+                        <Text variant="heading-strong-m">
+                          {achievement.link ? (
+                            <SmartLink href={achievement.link} className={styles.achievementLink}>
+                              {achievement.result}
+                            </SmartLink>
+                          ) : (
+                            achievement.result
+                          )}
+                        </Text>
+                        <Text variant="body-default-s" onBackground="neutral-weak">
+                          {achievement.competition}
+                        </Text>
+                      </Column>
+                    ))}
+                  </Column>
+                </Row>
+              ));
+          })()}
+        </Column>
       </Column>
 
       {/* They Trusted Me */}
@@ -106,14 +115,13 @@ export default function Sports() {
                 horizontal="center"
                 vertical="center"
                 className={styles.logoContainer}
-                style={{ width: "140px", height: "100px" }}
+                style={{ width: "140px", height: "120px" }}
               >
                 <Media
                   src={company.logo}
                   alt={company.name}
                   sizes="120px"
-                  className={isDarkLogo ? styles.darkLogo : undefined}
-                  style={{ maxHeight: "80px", objectFit: "contain" }}
+                  className={`${styles.logoImage} ${isDarkLogo ? styles.darkLogo : ''}`}
                 />
               </Flex>
             );
