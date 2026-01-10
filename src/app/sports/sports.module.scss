@@ -6,10 +6,10 @@
 
 .timelineLine {
   position: absolute;
-  top: 24px;
+  top: 21px;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg, var(--brand-solid-strong), var(--brand-alpha-medium));
   z-index: 0;
 }
@@ -48,13 +48,13 @@
 }
 
 .dot {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--brand-solid-strong);
-  border: 3px solid var(--background-page);
-  box-shadow: 0 0 0 3px var(--brand-solid-strong);
-  margin-bottom: var(--static-space-12);
+  border: 2px solid var(--background-page);
+  box-shadow: 0 0 0 2px var(--brand-solid-strong);
+  margin-bottom: var(--static-space-8);
   flex-shrink: 0;
 }
 
