@@ -19,11 +19,14 @@ links:
 
 A comprehensive, production-grade sales forecasting solution developed during my internship at Decathlon Belgium. This project industrializes the prediction of 8 key sales KPIs (GMV, items sold) segmented by channel (InStore/OutStore, 1P/3P) for all 64 sports departments.
 
+Replaced manual forecasting processes with an automated, scalable ML solution. Achieved **15% improvement in forecast accuracy (MAPE)** through rigorous model comparison and advanced feature engineering.
+
 ## Technical Architecture
 
 ### ML & Data Processing
 
-- **Prophet** - Facebook's time-series forecasting library for multi-output predictions
+- **Prophet** - Facebook's time-series forecasting library for multi-output predictions (selected after benchmarking)
+- **Model Comparison** - Rigorous evaluation of Prophet, XGBoost, LightGBM, Chronos-Bolt to select best approach
 - **Apache Spark / PySpark** - Distributed data processing at scale
 - **Delta Lake** - ACID transactions and versioned data storage
 - **Pandas / NumPy** - Data manipulation and numerical computing
@@ -33,6 +36,7 @@ A comprehensive, production-grade sales forecasting solution developed during my
 ### MLOps Platform
 
 - **Databricks** - Unified analytics platform for notebooks, compute, and orchestration
+- **Apache Airflow** - Workflow orchestration for the entire data pipeline (ingestion to prediction delivery)
 - **MLflow** - Complete ML lifecycle management:
   - Experiment tracking with metrics and parameters
   - Model Registry with versioning (`prophet-sport-<sport_code>`)
@@ -42,6 +46,8 @@ A comprehensive, production-grade sales forecasting solution developed during my
 ### Cloud Infrastructure
 
 - **AWS S3** - Data lake storage for inputs, intermediate outputs, and final predictions
+- **Amazon SageMaker** - ML model training and experimentation environment
+- **Amazon Bedrock** - Foundation models exploration
 - **AWS CodeArtifact** - Python package repository (wheel files)
 - **AWS ECR** - Docker container registry
 - **AWS SSO** - Identity and access management
@@ -125,10 +131,10 @@ Errors in individual sports don't halt the pipeline - other sports continue proc
 
 | Category | Technologies |
 |----------|-------------|
-| **ML** | Prophet, scikit-learn, joblib |
+| **ML** | Prophet, XGBoost, LightGBM, Chronos-Bolt, scikit-learn, joblib |
 | **Data** | PySpark, Delta Lake, Pandas, NumPy |
-| **MLOps** | Databricks, MLflow, Databricks Bundles |
-| **Cloud** | AWS S3, CodeArtifact, ECR |
+| **MLOps** | Databricks, MLflow, Apache Airflow, Databricks Bundles |
+| **Cloud** | AWS S3, SageMaker, Bedrock, CodeArtifact, ECR |
 | **CI/CD** | GitHub Actions, SonarCloud |
 | **Quality** | Ruff, Mypy, Bandit, Sphinx |
 | **Tools** | uv, Makefile, Cookiecutter |
@@ -136,8 +142,10 @@ Errors in individual sports don't halt the pipeline - other sports continue proc
 
 ## Results
 
+- **15% improvement** in forecast accuracy (MAPE) vs previous manual process
 - Predicts sales for **64 sports categories**
 - Forecasts **8 KPIs** per sport (GMV, items by channel)
+- Replaced **manual forecasting** with automated, scalable ML pipeline
 - Processes **multi-source data** (sales, weather, holidays)
 - Runs on **scheduled production jobs** with automated retraining
 - Exports to **Google Sheets** for business stakeholders
