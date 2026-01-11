@@ -115,9 +115,8 @@ const about: About = {
             challenges into intelligent solutions to improve company efficiency.
           </>,
           <>
-            <strong>Built DAISI (Decathlon AI Suppliers Information)</strong> — an AI chatbot providing instant answers
-            about supplier processes, trained on internal procedures and connected to tools like eOne,
-            with escalation capabilities to accountants. <strong>Impact: 13,000 hours/year saved</strong> for the suppliers team.
+            <strong>Built DAISI (Decathlon AI Suppliers Information)</strong>: an AI chatbot providing instant answers
+            about supplier processes, trained on internal procedures, with escalation capabilities to accountants. <strong>Impact: 13,000 hours/year saved</strong> for the suppliers team.
           </>,
           <>
             Developing production-ready RAG architectures using LangChain, LangGraph, and Vector Databases

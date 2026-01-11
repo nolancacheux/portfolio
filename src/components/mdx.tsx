@@ -1,6 +1,7 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ReactNode } from "react";
 import { slugify as transliterate } from "transliteration";
+import remarkGfm from "remark-gfm";
 
 import {
   Heading,
@@ -170,6 +171,59 @@ function createHR() {
   );
 }
 
+function createTable({ children }: { children: ReactNode }) {
+  return (
+    <table style={{
+      width: '100%',
+      borderCollapse: 'collapse',
+      marginTop: 'var(--static-space-16)',
+      marginBottom: 'var(--static-space-16)',
+    }}>
+      {children}
+    </table>
+  );
+}
+
+function createTableHead({ children }: { children: ReactNode }) {
+  return <thead>{children}</thead>;
+}
+
+function createTableBody({ children }: { children: ReactNode }) {
+  return <tbody>{children}</tbody>;
+}
+
+function createTableRow({ children }: { children: ReactNode }) {
+  return (
+    <tr style={{ borderBottom: '1px solid var(--neutral-alpha-medium)' }}>
+      {children}
+    </tr>
+  );
+}
+
+function createTableHeader({ children }: { children: ReactNode }) {
+  return (
+    <th style={{
+      padding: 'var(--static-space-12)',
+      textAlign: 'left',
+      fontWeight: 600,
+      color: 'var(--neutral-on-background-strong)',
+    }}>
+      {children}
+    </th>
+  );
+}
+
+function createTableCell({ children }: { children: ReactNode }) {
+  return (
+    <td style={{
+      padding: 'var(--static-space-12)',
+      color: 'var(--neutral-on-background-medium)',
+    }}>
+      {children}
+    </td>
+  );
+}
+
 const components = {
   p: createParagraph as any,
   h1: createHeading("h1") as any,
@@ -186,6 +240,12 @@ const components = {
   ul: createList as any,
   li: createListItem as any,
   hr: createHR as any,
+  table: createTable as any,
+  thead: createTableHead as any,
+  tbody: createTableBody as any,
+  tr: createTableRow as any,
+  th: createTableHeader as any,
+  td: createTableCell as any,
   Heading,
   Text,
   CodeBlock,
@@ -209,5 +269,15 @@ type CustomMDXProps = MDXRemoteProps & {
 };
 
 export function CustomMDX(props: CustomMDXProps) {
-  return <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />;
+  return (
+    <MDXRemote
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        },
+      }}
+    />
+  );
 }
